@@ -98,9 +98,9 @@
     var h = '<p class="map__h">' + esc(t('map_label')) + '</p><p class="map__hint">' + esc(t('map_hint')) + '</p><div class="map__fig">';
     h += '<a class="mb mb--goal" href="#overview" data-target="overview"><span class="mb__t">' + esc(t('map_goal')) + '</span><span class="mb__s">' + esc(L(K.goal)) + '</span></a>' + arrow;
     K.pillars.forEach(function (p) {
-      h += '<a class="mb mb--p mb--' + p.id + '" href="#' + p.id.toLowerCase() + '" data-target="' + p.id.toLowerCase() + '" style="--ext:' + (44 + counts[p.id] * 5) + 'px">' +
+      h += '<a class="mb mb--p mb--' + p.id + '" href="#' + p.id.toLowerCase() + '" data-target="' + p.id.toLowerCase() + '" style="--ext:' + (40 + counts[p.id] * 3) + 'px">' +
         '<span class="mb__row"><span class="mb__num">' + p.num + '</span><span><span class="mb__t">' + esc(p.bm) + '</span><span class="mb__short">' + esc(t('short_' + p.id)) + '</span>' +
-        '<span class="mb__s">' + esc(state.lang === 'en' ? p.en : extent[p.id]) + '</span>' + (state.lang === 'en' ? '<span class="mb__s">' + esc(extent[p.id]) + '</span>' : '') + '</span></span></a>';
+        (state.lang === 'en' ? '<span class="mb__s mb__en">' + esc(p.en) + '</span>' : '') + '<span class="mb__s">' + esc(extent[p.id]) + '</span>' + '</span></span></a>';
     });
     h += '<a class="mb mb--en" href="#enablers" data-target="enablers"><span class="mb__t">' + esc(t('map_enablers')) + ' (' + K.enablers.length + ')</span><span class="mb__s">' + esc(K.enablers.map(function (e) { return L(e); }).join(' · ')) + '</span></a>';
     h += '<a class="mb mb--ev" href="#evidence" data-target="evidence"><span class="mb__t">' + esc(t('map_evidence')) + ' (' + K.evidence.length + ')</span><span class="mb__s">' + esc(K.evidence.map(function (e) { return L(e); }).join(' · ')) + '</span></a>';
