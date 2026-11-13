@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SKUAD Antidadah Framework Dashboard</title>
+  <meta name="description" content="Interactive companion to a proposed community-based SKUAD Antidadah empowerment framework. Synthetic illustrative data; not an official AADK product.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F3864'/%3E%3Crect x='6' y='9' width='5' height='17' rx='1.5' fill='%2364A0E8'/%3E%3Crect x='13.5' y='6' width='5' height='20' rx='1.5' fill='%2342B98F'/%3E%3Crect x='21' y='12' width='5' height='14' rx='1.5' fill='%23E8925F'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="6" fill="#ffffff" fill-opacity=".12"/>
+          <rect x="6" y="9" width="5" height="17" rx="1.5" fill="#64A0E8"/>
+          <rect x="13.5" y="6" width="5" height="20" rx="1.5" fill="#42B98F"/>
+          <rect x="21" y="12" width="5" height="14" rx="1.5" fill="#E8925F"/>
+        </svg>
+        <div class="brand__text">
+          <h1 class="brand__title" id="page-title">Kerangka Pemerkasaan SKUAD Antidadah Berasaskan Komuniti</h1>
+          <p class="brand__sub" id="page-sub"></p>
+        </div>
+      </div>
+      <div class="lang" role="group" aria-label="Language" id="lang-group">
+        <button type="button" class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang__btn" data-lang="bm" aria-pressed="false">BM</button>
+      </div>
+    </div>
+  </header>
+  <div class="notice-wrap"><p class="notice" role="note" id="notice"></p></div>
+
+  <div class="layout">
+    <nav class="map" id="map" aria-label="Framework map"></nav>
+    <main id="main" tabindex="-1">
+      <noscript><p class="noscript">This dashboard needs JavaScript to show the framework and its data.</p></noscript>
+      <section class="section" id="overview" data-section="overview" aria-labelledby="overview-h"></section>
+      <section class="section" id="p1" data-section="p1" aria-labelledby="p1-h"></section>
+      <section class="section" id="p2" data-section="p2" aria-labelledby="p2-h"></section>
+      <section class="section" id="p3" data-section="p3" aria-labelledby="p3-h"></section>
+      <section class="section" id="enablers" data-section="enablers" aria-labelledby="enablers-h"></section>
+      <section class="section" id="evidence" data-section="evidence" aria-labelledby="evidence-h"></section>
+    </main>
+  </div>
+
+  <footer class="footer" id="footer"></footer>
+  <div class="sr-only" aria-live="polite" id="live"></div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

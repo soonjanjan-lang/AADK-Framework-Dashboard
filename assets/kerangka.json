@@ -1,0 +1,904 @@
+{
+ "title": {
+  "bm": "Kerangka Pemerkasaan SKUAD Antidadah Berasaskan Komuniti",
+  "en": "Community-Based SKUAD Antidadah Empowerment Framework"
+ },
+ "goal": {
+  "bm": "Komuniti berdaya dan kepulihan yang berkekalan",
+  "en": "Empowered communities and lasting recovery"
+ },
+ "status": {
+  "bm": "Cadangan kerangka - akan diperhalusi dengan bukti kajian dan disahkan bersama pihak berkepentingan",
+  "en": "Proposed framework - to be refined with study evidence and validated with stakeholders"
+ },
+ "levels": [
+  {
+   "id": "input",
+   "bm": "Input",
+   "en": "Input"
+  },
+  {
+   "id": "activity",
+   "bm": "Aktiviti",
+   "en": "Activity"
+  },
+  {
+   "id": "output",
+   "bm": "Output",
+   "en": "Output"
+  },
+  {
+   "id": "outcome",
+   "bm": "Outcome",
+   "en": "Outcome"
+  },
+  {
+   "id": "impact",
+   "bm": "Impak",
+   "en": "Impact"
+  },
+  {
+   "id": "vfm",
+   "bm": "Nilai untuk Wang",
+   "en": "Value for money"
+  }
+ ],
+ "pillars": [
+  {
+   "id": "P1",
+   "num": 1,
+   "bm": "Indikator Keberkesanan Program",
+   "en": "Programme Effectiveness Indicators",
+   "tag": {
+    "bm": "Kad Skor SKUAD: 15 indikator",
+    "en": "SKUAD Scorecard: 15 indicators"
+   },
+   "summary": {
+    "bm": "Satu set indikator yang mudah diukur daripada rekod sedia ada AADK, dari input hingga nilai untuk wang. Sasaran setiap indikator ditetapkan berdasarkan anggaran impak sebab-akibat kajian ini.",
+    "en": "A short set of indicators that AADK can measure from records it already keeps, from inputs through to value for money. Each indicator's target is set from this study's causal impact estimates."
+   }
+  },
+  {
+   "id": "P2",
+   "num": 2,
+   "bm": "Mekanisme Penglibatan Komuniti",
+   "en": "Community Engagement Mechanism",
+   "tag": {
+    "bm": "Tangga penglibatan: daripada sedar kepada memimpin",
+    "en": "Engagement ladder: from aware to leading"
+   },
+   "summary": {
+    "bm": "Laluan yang jelas untuk penduduk bergerak daripada sedar, kepada menyertai, menyumbang dan akhirnya memimpin, melalui saluran dan rakan kongsi setempat.",
+    "en": "A clear path for residents to move from being aware, to joining, contributing and finally leading, through local channels and partners."
+   }
+  },
+  {
+   "id": "P3",
+   "num": 3,
+   "bm": "Model Sokongan Komuniti",
+   "en": "Community Support Model",
+   "tag": {
+    "bm": "Tiga tahap sokongan yang dihubungkan dengan pengurusan kes AADK",
+    "en": "Three tiers of support linked to AADK case management"
+   },
+   "summary": {
+    "bm": "Sokongan berperingkat daripada pencegahan untuk semua, kepada sokongan awal dan rujukan, hingga pengekalan kepulihan bagi klien AADK.",
+    "en": "Tiered support, from prevention for everyone, to early support and referral, to helping AADK clients stay in recovery."
+   }
+  }
+ ],
+ "indicators": [
+  {
+   "id": "IN1",
+   "level": "input",
+   "dv": "DV1",
+   "skop": "i",
+   "dir": "up",
+   "unit": {
+    "bm": "per 1,000 penduduk",
+    "en": "per 1,000 residents"
+   },
+   "bm": "Sukarelawan aktif bagi setiap 1,000 penduduk",
+   "en": "Active volunteers per 1,000 residents",
+   "def": {
+    "bm": "Ahli SKUAD berdaftar yang merekodkan sekurang-kurangnya satu aktiviti dalam tahun tersebut, bagi setiap 1,000 penduduk.",
+    "en": "Registered SKUAD members with at least one recorded activity in the year, per 1,000 residents."
+   },
+   "source": {
+    "bm": "Daftar SKUAD (skuad.aadk.gov.my); anggaran penduduk DOSM",
+    "en": "SKUAD registry (skuad.aadk.gov.my); DOSM population"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "I1",
+   "sim": {
+    "baseline_2019": 1.23,
+    "latest_2025": 3.33,
+    "target": 3.75
+   }
+  },
+  {
+   "id": "IN2",
+   "level": "input",
+   "dv": "DV1",
+   "skop": "iii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Sukarelawan terlatih (%)",
+   "en": "Trained volunteers (%)",
+   "def": {
+    "bm": "Peratus sukarelawan aktif yang telah menamatkan latihan teras SKUAD.",
+    "en": "Share of active volunteers who have completed SKUAD core training."
+   },
+   "source": {
+    "bm": "Rekod latihan SKUAD",
+    "en": "SKUAD training records"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "I2",
+   "sim": {
+    "baseline_2019": 51.6,
+    "latest_2025": 58.7,
+    "target": 61.0
+   }
+  },
+  {
+   "id": "AC1",
+   "level": "activity",
+   "dv": "DV1",
+   "skop": "i",
+   "dir": "up",
+   "unit": {
+    "bm": "per 1,000 penduduk sesuku",
+    "en": "per 1,000 residents per quarter"
+   },
+   "bm": "Aktiviti komuniti bagi setiap 1,000 penduduk",
+   "en": "Community activities per 1,000 residents",
+   "def": {
+    "bm": "Bilangan aktiviti SKUAD (semua aliran) bagi setiap 1,000 penduduk sesuku tahun.",
+    "en": "Number of SKUAD activities (all streams) per 1,000 residents per quarter."
+   },
+   "source": {
+    "bm": "Laporan aktiviti SKUAD",
+    "en": "SKUAD activity reports"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "A1",
+   "sim": {
+    "baseline_2019": 0.099,
+    "latest_2025": 0.221,
+    "target": 0.245
+   }
+  },
+  {
+   "id": "AC2",
+   "level": "activity",
+   "dv": "DV2",
+   "skop": "ii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Aktiviti aliran pemulihan (%)",
+   "en": "Recovery-stream activities (%)",
+   "def": {
+    "bm": "Peratus aktiviti SKUAD dalam aliran Pemulihan (sokongan kepada individu dalam pemulihan).",
+    "en": "Share of SKUAD activities in the Pemulihan (recovery) stream, which supports people in recovery."
+   },
+   "source": {
+    "bm": "Laporan aktiviti SKUAD",
+    "en": "SKUAD activity reports"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "A2",
+   "sim": {
+    "baseline_2019": 11.8,
+    "latest_2025": 11.7,
+    "target": 14.2
+   }
+  },
+  {
+   "id": "OP1",
+   "level": "output",
+   "dv": "DV1",
+   "skop": "i",
+   "dir": "up",
+   "unit": {
+    "bm": "per 1,000 penduduk",
+    "en": "per 1,000 residents"
+   },
+   "bm": "Penduduk yang dicapai bagi setiap 1,000 penduduk",
+   "en": "Residents reached per 1,000 residents",
+   "def": {
+    "bm": "Jumlah penyertaan dalam aktiviti SKUAD dalam setahun, bagi setiap 1,000 penduduk.",
+    "en": "Total attendance at SKUAD activities in the year, per 1,000 residents."
+   },
+   "source": {
+    "bm": "Laporan aktiviti SKUAD",
+    "en": "SKUAD activity reports"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "O1",
+   "sim": {
+    "baseline_2019": 12.6,
+    "latest_2025": 28.0,
+    "target": 30.9
+   }
+  },
+  {
+   "id": "OP2",
+   "level": "output",
+   "dv": "DV1",
+   "skop": "i",
+   "dir": "up",
+   "unit": {
+    "bm": "per 1,000 penduduk",
+    "en": "per 1,000 residents"
+   },
+   "bm": "Rujukan komuniti kepada AADK bagi setiap 1,000 penduduk",
+   "en": "Community referrals to AADK per 1,000 residents",
+   "def": {
+    "bm": "Rujukan atau maklumat daripada komuniti kepada pejabat AADK daerah dalam setahun, bagi setiap 1,000 penduduk.",
+    "en": "Referrals or information passed by the community to the AADK district office in the year, per 1,000 residents."
+   },
+   "source": {
+    "bm": "Log pejabat AADK daerah",
+    "en": "AADK district office logs"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "O2",
+   "sim": {
+    "baseline_2019": 0.35,
+    "latest_2025": 0.38,
+    "target": 0.42
+   }
+  },
+  {
+   "id": "OP3",
+   "level": "output",
+   "dv": "DV2",
+   "skop": "ii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Klien yang dihubungkan dengan sokongan SKUAD (%)",
+   "en": "Clients linked to SKUAD support (%)",
+   "def": {
+    "bm": "Peratus klien baharu AADK (pengawasan atau sukarela) yang menerima sokongan SKUAD.",
+    "en": "Share of new AADK clients (supervision or voluntary) who receive SKUAD support."
+   },
+   "source": {
+    "bm": "Rekod kes klien AADK",
+    "en": "AADK client case records"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "O3",
+   "sim": {
+    "baseline_2019": 23.9,
+    "latest_2025": 42.9,
+    "target": 50.0
+   }
+  },
+  {
+   "id": "OC1",
+   "level": "outcome",
+   "dv": "DV1",
+   "skop": "i",
+   "dir": "up",
+   "unit": {
+    "bm": "per 1,000 penduduk",
+    "en": "per 1,000 residents"
+   },
+   "bm": "Kemasukan rawatan secara sukarela bagi setiap 1,000 penduduk",
+   "en": "Voluntary treatment entries per 1,000 residents",
+   "def": {
+    "bm": "Individu yang tampil secara sukarela untuk rawatan (Seksyen 8, Akta 283) dalam setahun, bagi setiap 1,000 penduduk.",
+    "en": "People who come forward for voluntary treatment (Section 8, Act 283) in the year, per 1,000 residents."
+   },
+   "source": {
+    "bm": "Sistem maklumat klien AADK",
+    "en": "AADK client information system"
+   },
+   "freq": {
+    "bm": "Suku tahunan",
+    "en": "Quarterly"
+   },
+   "sim_key": "E1",
+   "sim": {
+    "baseline_2019": 0.49,
+    "latest_2025": 0.6,
+    "target": 0.66
+   }
+  },
+  {
+   "id": "OC2",
+   "level": "outcome",
+   "dv": "DV1",
+   "skop": "iii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Pengekalan sukarelawan selepas 12 bulan (%)",
+   "en": "Volunteer retention at 12 months (%)",
+   "def": {
+    "bm": "Peratus sukarelawan baharu yang masih aktif 12 bulan selepas mendaftar.",
+    "en": "Share of new volunteers still active 12 months after registering."
+   },
+   "source": {
+    "bm": "Daftar SKUAD",
+    "en": "SKUAD registry"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "E2",
+   "sim": {
+    "baseline_2019": 49.2,
+    "latest_2025": 54.1,
+    "target": 57.1
+   }
+  },
+  {
+   "id": "OC3",
+   "level": "outcome",
+   "dv": "DV2",
+   "skop": "ii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Kadar tamat pengawasan (%)",
+   "en": "Supervision completion rate (%)",
+   "def": {
+    "bm": "Peratus klien yang menamatkan tempoh pengawasan tanpa pelanggaran.",
+    "en": "Share of clients who complete their supervision period without a breach."
+   },
+   "source": {
+    "bm": "Sistem maklumat klien AADK",
+    "en": "AADK client information system"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "R1",
+   "sim": {
+    "baseline_2019": 59.6,
+    "latest_2025": 61.5,
+    "target": 65.1
+   }
+  },
+  {
+   "id": "IM1",
+   "level": "impact",
+   "dv": "DV1",
+   "skop": "i",
+   "dir": "up",
+   "unit": {
+    "bm": "indeks",
+    "en": "index"
+   },
+   "bm": "Indeks Pemerkasaan Komuniti",
+   "en": "Community Empowerment Index",
+   "def": {
+    "bm": "Purata piawai bagi kadar pendaftaran sukarelawan, aktiviti, rawatan sukarela dan rujukan komuniti (0 = lokaliti biasa tanpa SKUAD).",
+    "en": "Standardised average of volunteer sign-ups, activities, voluntary treatment and community referrals (0 = a typical locality without SKUAD)."
+   },
+   "source": {
+    "bm": "Diterbitkan daripada IN1, AC1, OP2 dan OC1",
+    "en": "Derived from IN1, AC1, OP2 and OC1"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "E3",
+   "sim": {
+    "baseline_2019": 0.26,
+    "latest_2025": 0.56,
+    "target": 0.62
+   }
+  },
+  {
+   "id": "IM2",
+   "level": "impact",
+   "dv": "DV2",
+   "skop": "ii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Bebas relaps selepas 12 bulan (%)",
+   "en": "Relapse-free at 12 months (%)",
+   "def": {
+    "bm": "Peratus klien yang tiada rekod relaps dalam tempoh 12 bulan selepas kemasukan.",
+    "en": "Share of clients with no recorded relapse within 12 months of intake."
+   },
+   "source": {
+    "bm": "Sistem maklumat klien AADK",
+    "en": "AADK client information system"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "R2",
+   "sim": {
+    "baseline_2019": 57.1,
+    "latest_2025": 57.2,
+    "target": 57.9
+   }
+  },
+  {
+   "id": "IM3",
+   "level": "impact",
+   "dv": "DV2",
+   "skop": "ii",
+   "dir": "up",
+   "unit": {
+    "bm": "%",
+    "en": "%"
+   },
+   "bm": "Bekerja atau belajar semasa tamat program (%)",
+   "en": "Working or studying at exit (%)",
+   "def": {
+    "bm": "Peratus klien yang bekerja atau belajar semasa tamat pengawasan atau rawatan.",
+    "en": "Share of clients working or studying when they leave supervision or treatment."
+   },
+   "source": {
+    "bm": "Sistem maklumat klien AADK",
+    "en": "AADK client information system"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "R3",
+   "sim": {
+    "baseline_2019": 42.4,
+    "latest_2025": 44.6,
+    "target": 46.2
+   }
+  },
+  {
+   "id": "VM1",
+   "level": "vfm",
+   "dv": "DV2",
+   "skop": "iii",
+   "dir": "down",
+   "unit": {
+    "bm": "RM",
+    "en": "RM"
+   },
+   "bm": "Kos bagi setiap klien tambahan bebas relaps (RM)",
+   "en": "Cost per additional relapse-free client (RM)",
+   "def": {
+    "bm": "Kos ekonomi SKUAD (perbelanjaan AADK + nilai masa sukarelawan) dibahagi dengan bilangan klien tambahan yang bebas relaps hasil sokongan SKUAD (anggaran impak x klien disokong).",
+    "en": "SKUAD's economic cost (AADK spending + value of volunteer time) divided by the extra relapse-free clients due to SKUAD support (impact estimate x clients supported)."
+   },
+   "source": {
+    "bm": "Rekod kewangan AADK; log masa sukarelawan; anggaran impak kajian",
+    "en": "AADK finance records; volunteer time logs; study impact estimate"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "V1",
+   "sim": {
+    "baseline_2019": 6837.0,
+    "latest_2025": 10677.0,
+    "target": 8342.0
+   }
+  },
+  {
+   "id": "VM2",
+   "level": "vfm",
+   "dv": "DV2",
+   "skop": "iii",
+   "dir": "up",
+   "unit": {
+    "bm": "nisbah",
+    "en": "ratio"
+   },
+   "bm": "Nisbah faedah-kos",
+   "en": "Benefit-cost ratio",
+   "def": {
+    "bm": "Nilai ringgit faedah (kos relaps yang dielakkan + nilai pekerjaan) bagi setiap RM1 kos SKUAD.",
+    "en": "Ringgit value of benefits (relapse costs avoided + value of employment) for every RM1 of SKUAD cost."
+   },
+   "source": {
+    "bm": "Seperti VM1, ditambah kos unit rawatan AADK",
+    "en": "As VM1, plus AADK treatment unit costs"
+   },
+   "freq": {
+    "bm": "Tahunan",
+    "en": "Annual"
+   },
+   "sim_key": "V2",
+   "sim": {
+    "baseline_2019": 5.71,
+    "latest_2025": 2.7,
+    "target": 3.21
+   }
+  }
+ ],
+ "ladder": [
+  {
+   "id": "L1",
+   "bm": "Sedar",
+   "en": "Aware",
+   "desc": {
+    "bm": "Penduduk mengetahui bahaya dadah dan peranan SKUAD melalui sekolah, masjid, sukan dan saluran digital.",
+    "en": "Residents learn about drug harms and what SKUAD does through schools, mosques, sports and digital channels."
+   },
+   "indicators": [
+    "OP1"
+   ]
+  },
+  {
+   "id": "L2",
+   "bm": "Sertai",
+   "en": "Join",
+   "desc": {
+    "bm": "Penduduk mendaftar dalam talian, disambut, dan dipasangkan dengan sukarelawan berpengalaman.",
+    "en": "Residents register online, are welcomed, and are paired with an experienced volunteer."
+   },
+   "indicators": [
+    "IN1"
+   ]
+  },
+  {
+   "id": "L3",
+   "bm": "Sumbang",
+   "en": "Contribute",
+   "desc": {
+    "bm": "Sukarelawan memikul peranan tetap: pencegahan, sokongan keluarga, sokongan pemulihan dan rujukan kepada AADK.",
+    "en": "Volunteers take on regular roles: prevention, family support, recovery support and referral to AADK."
+   },
+   "indicators": [
+    "AC1",
+    "OP2"
+   ]
+  },
+  {
+   "id": "L4",
+   "bm": "Pimpin",
+   "en": "Lead",
+   "desc": {
+    "bm": "Sukarelawan berpengalaman memimpin unit setempat, membimbing ahli baharu dan merancang bersama pejabat AADK daerah.",
+    "en": "Experienced volunteers lead local units, mentor newcomers and plan together with the AADK district office."
+   },
+   "indicators": [
+    "IN2",
+    "OC2"
+   ]
+  }
+ ],
+ "channels": [
+  {
+   "bm": "Sekolah dan institusi pengajian tinggi (SKUAD Junior)",
+   "en": "Schools and higher-learning institutions (SKUAD Junior)"
+  },
+  {
+   "bm": "Masjid, surau dan rumah ibadat",
+   "en": "Mosques, surau and places of worship"
+  },
+  {
+   "bm": "Kelab sukan dan rekreasi",
+   "en": "Sports and recreation clubs"
+  },
+  {
+   "bm": "Tempat kerja dan perniagaan setempat",
+   "en": "Workplaces and local businesses"
+  },
+  {
+   "bm": "Digital: portal, aplikasi dan media sosial",
+   "en": "Digital: portal, app and social media"
+  }
+ ],
+ "partners": [
+  {
+   "bm": "Ketua kampung dan JKKK",
+   "en": "Village heads and JKKK",
+   "role": {
+    "bm": "Menggerakkan penduduk dan menganjurkan aktiviti",
+    "en": "Mobilise residents and host activities"
+   }
+  },
+  {
+   "bm": "Pemimpin agama",
+   "en": "Religious leaders",
+   "role": {
+    "bm": "Memberi sokongan moral dan mengurangkan stigma",
+    "en": "Give moral support and reduce stigma"
+   }
+  },
+  {
+   "bm": "Sekolah dan PIBG",
+   "en": "Schools and PIBG",
+   "role": {
+    "bm": "Menggerakkan SKUAD Junior dan amaran awal",
+    "en": "Run SKUAD Junior and spot early warning signs"
+   }
+  },
+  {
+   "bm": "Keluarga",
+   "en": "Families",
+   "role": {
+    "bm": "Barisan sokongan pertama di rumah",
+    "en": "First line of support at home"
+   }
+  },
+  {
+   "bm": "Individu dalam pemulihan",
+   "en": "People in recovery",
+   "role": {
+    "bm": "Mentor rakan sebaya dan contoh teladan",
+    "en": "Peer mentors and role models"
+   }
+  },
+  {
+   "bm": "Majikan",
+   "en": "Employers",
+   "role": {
+    "bm": "Peluang pekerjaan dan kemahiran untuk klien",
+    "en": "Jobs and skills for clients"
+   }
+  },
+  {
+   "bm": "Pejabat AADK daerah",
+   "en": "AADK district office",
+   "role": {
+    "bm": "Latihan, data dan pautan rujukan",
+    "en": "Training, data and the referral link"
+   }
+  }
+ ],
+ "retention": [
+  {
+   "bm": "Pengiktirafan dan sijil",
+   "en": "Recognition and certificates"
+  },
+  {
+   "bm": "Latihan kemahiran (termasuk digital dan AI)",
+   "en": "Skills training (including digital and AI)"
+  },
+  {
+   "bm": "Peranan yang jelas dan masa yang fleksibel",
+   "en": "Clear roles and flexible time"
+  },
+  {
+   "bm": "Hasil dikongsi semula dengan komuniti",
+   "en": "Results shared back with the community"
+  }
+ ],
+ "tiers": [
+  {
+   "id": "T1",
+   "num": 1,
+   "bm": "Pencegahan sejagat",
+   "en": "Universal prevention",
+   "who": {
+    "bm": "Seluruh komuniti",
+    "en": "The whole community"
+   },
+   "what": {
+    "bm": "Kesedaran, aktiviti sihat dan program keluarga",
+    "en": "Awareness, healthy activities and family programmes"
+   },
+   "indicators": [
+    "AC1",
+    "OP1"
+   ]
+  },
+  {
+   "id": "T2",
+   "num": 2,
+   "bm": "Sokongan awal dan rujukan",
+   "en": "Early support and referral",
+   "who": {
+    "bm": "Individu berisiko atau di peringkat awal penggunaan dadah, dan keluarga mereka",
+    "en": "People at risk or in early drug use, and their families"
+   },
+   "what": {
+    "bm": "Mengesan tanda awal, menggalakkan rawatan sukarela (Seksyen 8, Akta 283) dan rujukan mesra kepada AADK",
+    "en": "Spot early signs, encourage voluntary treatment (Section 8, Act 283) and make a warm referral to AADK"
+   },
+   "indicators": [
+    "OP2",
+    "OC1"
+   ]
+  },
+  {
+   "id": "T3",
+   "num": 3,
+   "bm": "Pengekalan kepulihan",
+   "en": "Recovery maintenance",
+   "who": {
+    "bm": "Klien AADK dalam pengawasan dan selepasnya",
+    "en": "AADK clients under supervision and afterwards"
+   },
+   "what": {
+    "bm": "Bimbingan rakan sebaya dan sukarelawan, sokongan keluarga, pautan pekerjaan dan amaran awal relaps kepada pegawai kes AADK",
+    "en": "Peer and volunteer mentoring, family support, links to jobs, and early warning of relapse to the AADK case officer"
+   },
+   "indicators": [
+    "OP3",
+    "OC3",
+    "IM2",
+    "IM3"
+   ]
+  }
+ ],
+ "pathway": [
+  {
+   "id": "S1",
+   "bm": "Kenal pasti",
+   "en": "Identify",
+   "lead": {
+    "bm": "SKUAD dan komuniti",
+    "en": "SKUAD and community"
+   },
+   "desc": {
+    "bm": "Sukarelawan dan keluarga mengesan tanda awal masalah dadah.",
+    "en": "Volunteers and families notice early signs of a drug problem."
+   }
+  },
+  {
+   "id": "S2",
+   "bm": "Rujuk",
+   "en": "Refer",
+   "lead": {
+    "bm": "SKUAD kepada AADK",
+    "en": "SKUAD to AADK"
+   },
+   "desc": {
+    "bm": "Rujukan mesra kepada pejabat AADK daerah; galakan rawatan sukarela.",
+    "en": "A warm referral to the AADK district office; voluntary treatment is encouraged."
+   }
+  },
+  {
+   "id": "S3",
+   "bm": "Rawat",
+   "en": "Treat",
+   "lead": {
+    "bm": "AADK",
+    "en": "AADK"
+   },
+   "desc": {
+    "bm": "AADK memberi rawatan dan pengawasan; pegawai kes dilantik.",
+    "en": "AADK provides treatment and supervision; a case officer is assigned."
+   }
+  },
+  {
+   "id": "S4",
+   "bm": "Integrasi semula",
+   "en": "Reintegrate",
+   "lead": {
+    "bm": "SKUAD, keluarga dan majikan",
+    "en": "SKUAD, family and employers"
+   },
+   "desc": {
+    "bm": "Bimbingan, aktiviti sihat, dan pautan kepada pekerjaan atau pembelajaran.",
+    "en": "Mentoring, healthy activities, and links to work or study."
+   }
+  },
+  {
+   "id": "S5",
+   "bm": "Kekalkan",
+   "en": "Sustain",
+   "lead": {
+    "bm": "SKUAD dan AADK",
+    "en": "SKUAD and AADK"
+   },
+   "desc": {
+    "bm": "Susulan 12 bulan; tanda relaps dimaklumkan segera kepada pegawai kes.",
+    "en": "A 12-month follow-up; signs of relapse go straight back to the case officer."
+   }
+  }
+ ],
+ "enablers": [
+  {
+   "id": "EN1",
+   "bm": "Tadbir urus dan peranan yang jelas",
+   "en": "Governance and clear roles",
+   "desc": {
+    "bm": "SOP dan perjanjian antara AADK, SKUAD dan badan komuniti",
+    "en": "SOPs and agreements between AADK, SKUAD and community bodies"
+   }
+  },
+  {
+   "id": "EN2",
+   "bm": "Sistem data dan pemantauan",
+   "en": "Data and monitoring system",
+   "desc": {
+    "bm": "Daftar, log aktiviti dan papan pemuka kad skor",
+    "en": "Registry, activity logs and a scorecard dashboard"
+   }
+  },
+  {
+   "id": "EN3",
+   "bm": "Pembangunan kapasiti",
+   "en": "Capacity building",
+   "desc": {
+    "bm": "Latihan sukarelawan; pegawai AADK dilatih dalam penilaian impak",
+    "en": "Volunteer training; AADK officers trained in impact evaluation"
+   }
+  },
+  {
+   "id": "EN4",
+   "bm": "Pembiayaan mampan dan perkongsian",
+   "en": "Sustainable funding and partnerships",
+   "desc": {
+    "bm": "Bukti nilai untuk wang, CSR dan pihak berkuasa tempatan",
+    "en": "Value-for-money evidence, CSR and local authorities"
+   }
+  }
+ ],
+ "evidence": [
+  {
+   "id": "EV1",
+   "bm": "Bukti impak sebab-akibat",
+   "en": "Causal impact evidence",
+   "desc": {
+    "bm": "RDD dan IV ke atas rekod pentadbiran AADK",
+    "en": "RDD and IV on AADK administrative records"
+   }
+  },
+  {
+   "id": "EV2",
+   "bm": "Bukti nilai untuk wang",
+   "en": "Value-for-money evidence",
+   "desc": {
+    "bm": "Penilaian ekonomi kesihatan (kos, keberkesanan kos, faedah-kos)",
+    "en": "Health economic evaluation (costs, cost-effectiveness, benefit-cost)"
+   }
+  },
+  {
+   "id": "EV3",
+   "bm": "Suara komuniti",
+   "en": "Community voices",
+   "desc": {
+    "bm": "Perbincangan kumpulan berfokus dan analisis tematik",
+    "en": "Focus group discussions and thematic analysis"
+   }
+  }
+ ],
+ "assumptions": {
+  "avoided_cost_per_relapse_rm": 15000.0,
+  "annual_min_wage_rm": 20400.0,
+  "extra_work_rate": 0.08
+ }
+}
