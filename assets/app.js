@@ -1014,7 +1014,7 @@
   function renderP2(panel) {
     panel.appendChild(h("p", { "class": "note", text: "Empowerment Theory (Zimmerman, 2000) sees residents moving from being aware, to joining, contributing and leading. Each rung is counted from the records; the FGDs will explain what helps people move up." }));
     var lad = h("div", { "class": "ladder scrollx" }); panel.appendChild(lad);
-    var W = 980, H = 250, svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "Engagement ladder: " + K.ladder.map(function (l) { return l.name + " " + int(l.count); }).join(", ") });
+    var W = 980, H = 330, svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "Engagement ladder: " + K.ladder.map(function (l) { return l.name + " " + int(l.count); }).join(", ") });
     s("path", { d: "M70,70 H910", stroke: "#0E7C5A", "stroke-width": 12, "stroke-linecap": "round", fill: "none" }, svg);
     var maxc = Math.max.apply(null, K.ladder.map(function (l) { return l.count; }));
     K.ladder.forEach(function (l, i) {
@@ -1022,8 +1022,10 @@
       s("circle", { cx: x, cy: 70, r: r, fill: "#FFFDF8", stroke: "#1E2B3C", "stroke-width": 6 }, svg);
       var an = i === 0 ? "start" : i === 3 ? "end" : "middle", tx = i === 0 ? x - 20 : i === 3 ? x + 20 : x;
       stext(svg, tx, 140, l.name, "ld-name", an);
-      stext(svg, tx, 166, int(l.count) + " · " + l.measure.toLowerCase(), "ld-num", an);
-      stextLines(svg, tx, 192, l.lever, 30, null, an, 20);
+      stext(svg, tx, 170, int(l.count), "ld-num", an);
+      var mlines = wrapWords(l.measure, 24);
+      mlines.forEach(function (ln, j) { stext(svg, tx, 194 + j * 20, ln, "ld-measure", an); });
+      stextLines(svg, tx, 194 + mlines.length * 20 + 16, l.lever, 24, null, an, 20);
     });
     lad.appendChild(svg);
     var F = K.funnel;

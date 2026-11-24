@@ -528,3 +528,5 @@ fieldset.ctl { border: 0; margin: 0; padding: 0; }
   .dt--prose td { border: 0; padding: 4px 10px; white-space: normal !important; }
   .dt--prose td:first-child { font-size: 18px; }
 }
+
+.ladder .ld-measure { font: 700 16px var(--font-read); fill: var(--green); }
