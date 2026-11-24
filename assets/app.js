@@ -1083,18 +1083,14 @@
         h("div", { "class": "inds" }, h("p", null, h("b", { text: "Indicators (all districts, " + K.years[K.years.length - 1] + ")" })),
           h("ul", null, t.indicators.map(function (id) { var ind = byId[id]; return h("li", null, h("span", { text: ind.name }), h("b", { text: fmtInd(ind, vals[id]) })); })))));
     });
-    var pw = h("div", { "class": "pathway scrollx" }); panel.appendChild(h("h3", { "class": "h3gap", text: "The support pathway: from the neighbourhood into AADK case management" })); panel.appendChild(pw);
-    var W = 980, H = 300, svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "Support pathway: " + K.pathway.map(function (p) { return p.name; }).join(", then ") });
-    s("path", { d: "M70,60 H910", stroke: "#B5501C", "stroke-width": 12, "stroke-linecap": "round", fill: "none" }, svg);
-    K.pathway.forEach(function (p, i) {
-      var x = 70 + i * 210, an = i === 0 ? "start" : i === 4 ? "end" : "middle", tx = i === 0 ? x - 20 : i === 4 ? x + 20 : x;
-      s("circle", { cx: x, cy: 60, r: 18, fill: "#FFFDF8", stroke: "#1E2B3C", "stroke-width": 6 }, svg);
-      stext(svg, tx, 116, (i + 1) + ". " + p.name, "pw-name", an);
-      stextLines(svg, tx, 142, p.who, 24, null, an, 20);
-      stextLines(svg, tx, 166, p.desc, 22, null, an, 20);
-      stextLines(svg, tx, 238, p.record, 20, "pw-rec", an, 20);
-    });
-    pw.appendChild(svg);
+    panel.appendChild(h("h3", { "class": "h3gap", text: "The support pathway: from the neighbourhood into AADK case management" }));
+    panel.appendChild(h("ol", { "class": "pw-list", "aria-label": "Support pathway" }, K.pathway.map(function (p, i) {
+      return h("li", null, h("span", { "class": "pw-stn", "aria-hidden": "true" }),
+        h("h4", { text: (i + 1) + ". " + p.name }),
+        h("p", { "class": "pw-who", text: p.who }),
+        h("p", { text: p.desc }),
+        h("p", { "class": "pw-rec", html: esc(p.record).replace(/_/g, "_<wbr>") }));
+    })));
   }
 
   // ------------------------------------------------------------------ route: where am I
