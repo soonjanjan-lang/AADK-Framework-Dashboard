@@ -1,31 +1,32 @@
-# Kerangka Pemerkasaan SKUAD Antidadah Berasaskan Komuniti — interactive dashboard
+# SKUAD Antidadah: data, evidence and framework
 
 **Live:** https://soonjanjan-lang.github.io/AADK-Framework-Dashboard/
 
-An interactive, bilingual (Bahasa Malaysia / English) companion to a research proposal submitted under the GPI AADK 2027 call (Bidang 5, Skop 6). It presents the proposed *Community-Based SKUAD Antidadah Empowerment Framework*:
+An illustrative companion to a GPI AADK 2027 research proposal (Bidang 5, Skop 6). On one page it shows:
 
-1. **Indikator Keberkesanan Program** (Programme Effectiveness Indicators): the 15-indicator SKUAD Scorecard, filterable by district, year and level, with a trend chart for each indicator.
-2. **Mekanisme Penglibatan Komuniti** (Community Engagement Mechanism): the engagement ladder, channels, partners and ways to keep volunteers.
-3. **Model Sokongan Komuniti** (Community Support Model): three tiers of support and the five-step support pathway.
+1. **The data.** Five de-identified record sets that AADK already keeps, shaped like the proposal's Table 4. A downloadable workbook includes a data dictionary.
+2. **RDD diagrams.** Interactive regression discontinuity charts comparing clients who entered just before and just after their local SKUAD unit started. The default view reproduces Figure 2 of the proposal.
+3. **The framework.** The proposed *Community-Based SKUAD Antidadah Empowerment Framework* (*Kerangka Pemerkasaan SKUAD Antidadah Berasaskan Komuniti*), with:
+   - programme effectiveness indicators,
+   - a community engagement mechanism,
+   - a community support model.
 
-It also covers the cross-cutting enablers, the evidence base and a value-for-money calculator.
+> **Important.** All numbers are **synthetic**: made up for illustration with a fixed random seed. District and locality codes such as `KDH-03` or `KDH-03-M07` are not real places. This is **not an official AADK website or product**.
 
-> **Important.** This is a *proposed* framework. **All numbers are synthetic** (randomly generated for illustration), and district codes such as `KDH-03` do not refer to real places. This is **not an official AADK website or product**.
-
-## Structure
+## Files
 
 | Path | What it is |
 |---|---|
 | `index.html` | The page (static, no build step) |
-| `assets/styles.css` | Styles (Public Sans; palette taken from the proposal's Figure 4) |
-| `assets/app.js` | Rendering, filters, charts, language switch |
-| `assets/data.js` | Generated: framework content, synthetic district data and BM/EN interface text |
-| `assets/kerangka.json` | The framework definition (single source of truth shared with the proposal document) |
-
-## Reusing it with real data
-
-`assets/data.js` is generated from `kerangka.json` and a district-by-year table of the 15 indicator values. To show real AADK figures, replace that table and regenerate the file; nothing else changes.
+| `assets/styles.css` | Styles |
+| `assets/app.js` | Charts, dataset browser, framework, navigation |
+| `assets/data.js` | Generated data: datasets, RDD estimates, framework |
+| `assets/qr.svg` | QR code for this page |
+| `data/SKUAD_illustrative_dataset.xlsx` | The illustrative dataset (Excel), with a data dictionary and formulas |
+| `data/csv/` | The five datasets as CSV files |
 
 ## Accessibility
 
-Body text is 18px and no text is smaller than 16px. The page uses WCAG AA contrast, is fully keyboard operable, works at phone width, and respects reduced-motion settings.
+- Body text is 18px, and no text is smaller than 16px.
+- The page is keyboard operable, works at phone width and respects reduced-motion settings.
+- Every chart has a table view.

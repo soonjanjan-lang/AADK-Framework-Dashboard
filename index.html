@@ -4,55 +4,216 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>SKUAD Antidadah Framework Dashboard</title>
-  <meta name="description" content="Interactive companion to a proposed community-based SKUAD Antidadah empowerment framework. Synthetic illustrative data; not an official AADK product.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231F3864'/%3E%3Crect x='6' y='9' width='5' height='17' rx='1.5' fill='%2364A0E8'/%3E%3Crect x='13.5' y='6' width='5' height='20' rx='1.5' fill='%2342B98F'/%3E%3Crect x='21' y='12' width='5' height='14' rx='1.5' fill='%23E8925F'/%3E%3C/svg%3E">
+  <title>SKUAD Antidadah: Data, Evidence and Framework</title>
+  <meta name="description" content="Illustrative companion to a GPI AADK 2027 research proposal: the records the study needs, interactive RDD diagrams, and the proposed Community-Based SKUAD Antidadah Empowerment Framework. Synthetic data; not an official AADK product.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231E2B3C'/%3E%3Cpath d='M16 3v26' stroke='%231F5FAD' stroke-width='5'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23FFFDF8' stroke='%231E2B3C' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Overpass:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <a class="skip" href="#main" data-i18n="skip">Skip to main content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="topbar__inner">
-      <div class="brand">
-        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-          <rect width="32" height="32" rx="6" fill="#ffffff" fill-opacity=".12"/>
-          <rect x="6" y="9" width="5" height="17" rx="1.5" fill="#64A0E8"/>
-          <rect x="13.5" y="6" width="5" height="20" rx="1.5" fill="#42B98F"/>
-          <rect x="21" y="12" width="5" height="14" rx="1.5" fill="#E8925F"/>
-        </svg>
-        <div class="brand__text">
-          <h1 class="brand__title" id="page-title">Kerangka Pemerkasaan SKUAD Antidadah Berasaskan Komuniti</h1>
-          <p class="brand__sub" id="page-sub"></p>
-        </div>
-      </div>
-      <div class="lang" role="group" aria-label="Language" id="lang-group">
-        <button type="button" class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" class="lang__btn" data-lang="bm" aria-pressed="false">BM</button>
-      </div>
-    </div>
-  </header>
-  <div class="notice-wrap"><p class="notice" role="note" id="notice"></p></div>
+  <p class="notice" role="note">
+    <svg class="notice__mark" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 6v5M10 13.6v.4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <span><strong>Illustrative only.</strong> Synthetic (made-up) records and a proposed framework, prepared for a GPI AADK 2027 research proposal. Not an official AADK product.</span>
+  </p>
 
-  <div class="layout">
-    <nav class="map" id="map" aria-label="Framework map"></nav>
+  <div class="shell">
+    <nav class="route" id="route" aria-label="Route through this page">
+      <p class="route__title">Your route</p>
+      <ol class="route__list">
+        <li><a href="#question" data-station="question"><span class="route__stn" aria-hidden="true"></span><span class="route__name">The question</span></a></li>
+        <li><a href="#plan" data-station="plan"><span class="route__stn" aria-hidden="true"></span><span class="route__name">The plan</span></a></li>
+        <li><a href="#data" data-station="data"><span class="route__stn" aria-hidden="true"></span><span class="route__name">The data</span></a></li>
+        <li><a href="#rdd" data-station="rdd"><span class="route__stn" aria-hidden="true"></span><span class="route__name">RDD diagrams</span></a></li>
+        <li><a href="#combine" data-station="combine"><span class="route__stn route__stn--x" aria-hidden="true"></span><span class="route__name">Numbers meet voices</span></a></li>
+        <li><a href="#framework" data-station="framework"><span class="route__stn route__stn--end" aria-hidden="true"></span><span class="route__name">The framework</span></a></li>
+      </ol>
+      <p class="route__here" id="route-here" aria-live="polite"></p>
+    </nav>
+
     <main id="main" tabindex="-1">
-      <noscript><p class="noscript">This dashboard needs JavaScript to show the framework and its data.</p></noscript>
-      <section class="section" id="overview" data-section="overview" aria-labelledby="overview-h"></section>
-      <section class="section" id="p1" data-section="p1" aria-labelledby="p1-h"></section>
-      <section class="section" id="p2" data-section="p2" aria-labelledby="p2-h"></section>
-      <section class="section" id="p3" data-section="p3" aria-labelledby="p3-h"></section>
-      <section class="section" id="enablers" data-section="enablers" aria-labelledby="enablers-h"></section>
-      <section class="section" id="evidence" data-section="evidence" aria-labelledby="evidence-h"></section>
+      <!-- 1. The question -->
+      <section class="stop stop--question" id="question" aria-labelledby="question-h">
+        <h1 id="question-h">Does SKUAD Antidadah work?</h1>
+        <p class="lede">AADK already keeps the records that can answer this. Using made-up records shaped like AADK's, this page shows the data the study would request, how comparing clients who entered <em>just before</em> and <em>just after</em> their local SKUAD unit started reveals SKUAD's effect, and the Empowerment Framework that the results would build.</p>
+
+        <div class="signs">
+          <a class="sign sign--blue" href="#data">
+            <svg class="sign__glyph" viewBox="0 0 56 56" aria-hidden="true"><path d="M0 28h56" class="sign__track"/><circle cx="28" cy="28" r="12" class="sign__ring"/></svg>
+            <span class="sign__text"><span class="sign__name">The data</span><span class="sign__desc">Five record sets AADK already keeps, with a workbook to download.</span></span>
+            <svg class="sign__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="sign sign--blue" href="#rdd">
+            <svg class="sign__glyph" viewBox="0 0 56 56" aria-hidden="true"><path d="M0 28h56" class="sign__track"/><circle cx="28" cy="28" r="12" class="sign__ring"/></svg>
+            <span class="sign__text"><span class="sign__name">RDD diagrams</span><span class="sign__desc">What changes for clients who enter just after a SKUAD unit starts.</span></span>
+            <svg class="sign__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="sign sign--orange" href="#framework">
+            <svg class="sign__glyph" viewBox="0 0 56 56" aria-hidden="true"><path d="M0 28h56" class="sign__track"/><circle cx="28" cy="28" r="12" class="sign__ring"/></svg>
+            <span class="sign__text"><span class="sign__name">The framework</span><span class="sign__desc">Indicators, community engagement and community support, built from the evidence.</span></span>
+            <svg class="sign__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <figure class="fig2" id="fig2">
+          <div class="pair" id="fig2-pair"></div>
+          <figcaption>
+            <span class="fig2__title">Figure 2 of the proposal, drawn from the illustrative records.</span>
+            Each dot is the average for clients whose intake fell in the same 3-month band, counted in months before (negative) or after the local SKUAD unit started. The dashed line is the start month.
+          </figcaption>
+        </figure>
+        <p class="readtogether" id="readtogether"></p>
+      </section>
+
+      <!-- 2. The plan -->
+      <section class="stop" id="plan" aria-labelledby="plan-h">
+        <header class="stop__head">
+          <span class="stop__ring" aria-hidden="true"></span>
+          <div>
+            <h2 id="plan-h">The plan at a glance</h2>
+            <p class="stop__sub">Four objectives given by AADK, how each is answered, and which way each measure should move if SKUAD works.</p>
+          </div>
+        </header>
+        <ol class="objectives" id="objectives"></ol>
+        <p class="scale" id="scale"></p>
+        <div class="details-set">
+          <details class="more" id="who-compared">
+            <summary>Who is compared, and who is left out</summary>
+            <div class="more__body" id="who-compared-body"></div>
+          </details>
+          <details class="more" id="power">
+            <summary>How small an effect could records like these detect?</summary>
+            <div class="more__body" id="power-body"></div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 3. The data -->
+      <section class="stop" id="data" aria-labelledby="data-h">
+        <header class="stop__head">
+          <span class="stop__ring" aria-hidden="true"></span>
+          <div>
+            <h2 id="data-h">The data AADK already keeps</h2>
+            <p class="stop__sub">Five sets of de-identified records, shaped like Table 4 of the proposal. Names, MyKad numbers and addresses are removed and replaced by codes. No questionnaire survey is needed.</p>
+          </div>
+        </header>
+        <div class="linemap" id="linemap" role="group" aria-label="How the five datasets connect"></div>
+        <div class="tabs" role="tablist" aria-label="Datasets" id="ds-tabs"></div>
+        <div class="dataset" id="ds-panel" role="tabpanel" tabindex="0"></div>
+        <div class="dict">
+          <div class="dict__head">
+            <h3>Data dictionary</h3>
+            <label class="search"><span class="sr-only">Search every column</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+              <input type="search" id="dict-q" placeholder="Search every column, e.g. relapse" autocomplete="off">
+            </label>
+          </div>
+          <p class="dict__count" id="dict-count" aria-live="polite"></p>
+          <div class="tablewrap"><table class="dt" id="dict-table"></table></div>
+        </div>
+        <div class="downloads" id="downloads"></div>
+      </section>
+
+      <!-- 4. RDD diagrams -->
+      <section class="stop" id="rdd" aria-labelledby="rdd-h">
+        <header class="stop__head">
+          <span class="stop__ring" aria-hidden="true"></span>
+          <div>
+            <h2 id="rdd-h">RDD diagrams: what changes when SKUAD starts</h2>
+            <p class="stop__sub">Picture two groups of clients in the same district. One entered supervision a few weeks before the local SKUAD unit started, the other a few weeks after. They are alike in almost every way, much as students who score 49 and 50 in an exam with a pass mark of 50 differ by luck rather than ability. So a sudden jump at the start month is SKUAD's doing. This comparison is called a <strong>regression discontinuity design (RDD)</strong>.</p>
+          </div>
+        </header>
+
+        <ol class="howto" aria-label="How to read the chart">
+          <li><b>Dots</b> are averages for clients in the same band of months.</li>
+          <li><b>Lines</b> show the trend on each side.</li>
+          <li><b>The dashed line</b> is the month SKUAD started.</li>
+          <li><b>The gap</b> where the lines meet it is SKUAD's effect.</li>
+        </ol>
+
+        <div class="controls" id="rdd-controls" role="group" aria-label="Chart settings"></div>
+        <div class="explorer">
+          <div class="pair" id="rdd-pair"></div>
+          <aside class="readout" id="rdd-readout" aria-live="polite"></aside>
+        </div>
+
+        <div class="tabs tabs--sub" role="tablist" aria-label="More about the RDD" id="rdd-tabs"></div>
+        <div class="subpanel" id="rdd-sub" role="tabpanel" tabindex="0"></div>
+      </section>
+
+      <!-- 5. Numbers meet voices -->
+      <section class="stop" id="combine" aria-labelledby="combine-h">
+        <header class="stop__head">
+          <span class="stop__ring stop__ring--x" aria-hidden="true"></span>
+          <div>
+            <h2 id="combine-h">Where the numbers meet the voices</h2>
+            <p class="stop__sub">The RDD says <em>how much</em> SKUAD changes. Focus group discussions (FGDs) explain <em>why and how</em>, and what gets in the way. The two lines meet to form the framework, which AADK then tests and refines.</p>
+          </div>
+        </header>
+        <div class="interchange" id="interchange"></div>
+        <h3 class="h3gap">What the focus groups will ask</h3>
+        <p class="note">Six groups, six to eight people each, analysed by thematic analysis (Braun and Clarke, 2006). These are guiding questions only: no FGD findings exist yet, and none are shown.</p>
+        <div class="tablewrap"><table class="dt dt--prose" id="fgd-table"></table></div>
+      </section>
+
+      <!-- 6. The framework -->
+      <section class="stop" id="framework" aria-labelledby="framework-h">
+        <header class="stop__head">
+          <span class="stop__ring stop__ring--end" aria-hidden="true"></span>
+          <div>
+            <h2 id="framework-h">The Community-Based SKUAD Antidadah Empowerment Framework</h2>
+            <p class="stop__sub"><span lang="ms">Kerangka Pemerkasaan SKUAD Antidadah Berasaskan Komuniti</span>. It combines programme effectiveness indicators, a community engagement mechanism and a community support model, as AADK asked.</p>
+          </div>
+        </header>
+        <p class="status-line" id="fw-status"></p>
+        <div class="fwmap" id="fwmap"></div>
+        <div class="tabs" role="tablist" aria-label="Framework pillars" id="fw-tabs"></div>
+        <div class="pillar" id="fw-panel" role="tabpanel" tabindex="0"></div>
+        <div class="base" id="fw-base"></div>
+      </section>
     </main>
   </div>
 
-  <footer class="footer" id="footer"></footer>
-  <div class="sr-only" aria-live="polite" id="live"></div>
+  <footer class="foot" id="foot">
+    <div class="foot__grid">
+      <div>
+        <h2 class="foot__h">About these numbers</h2>
+        <p id="foot-about">Every number on this page is synthetic. The records were generated with a fixed random seed, so rebuilding them gives identical values. They reproduce Figure 2 of the proposal exactly.</p>
+        <p>Places are codes (KDH-01 to KDH-12 in Kedah, PLS-01 in Perlis); no real person or place is represented.</p>
+        <h3 class="foot__h3">Method notes</h3>
+        <ul class="foot__list">
+          <li><b>Chart lines</b> are drawn through the dots on each side, each dot weighted by its number of records, exactly as in Figure 2.</li>
+          <li><b>Formal estimates</b> use rdrobust: local linear fits, a triangular kernel, a data-driven window, robust 95% ranges, and standard errors clustered by locality.</li>
+          <li><b>The two indices</b> average the standardised parts of each outcome (Kling, Liebman and Katz, 2007).</li>
+          <li><b>FGDs</b> are analysed by reflexive thematic analysis. They explain the numbers; they do not estimate effects.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="foot__h3">Key references</h3>
+        <ul class="foot__refs">
+          <li>Braun, V., &amp; Clarke, V. (2006). Using thematic analysis in psychology. <i>Qualitative Research in Psychology, 3</i>(2), 77–101.</li>
+          <li>Calonico, S., Cattaneo, M. D., &amp; Titiunik, R. (2014). Robust nonparametric confidence intervals for regression-discontinuity designs. <i>Econometrica, 82</i>(6), 2295–2326.</li>
+          <li>Cattaneo, M. D., Idrobo, N., &amp; Titiunik, R. (2020). <i>A practical introduction to regression discontinuity designs: Foundations.</i> Cambridge University Press.</li>
+          <li>Cloud, W., &amp; Granfield, R. (2008). Conceptualizing recovery capital. <i>Substance Use &amp; Misuse, 43</i>(12–13), 1971–1986.</li>
+          <li>Kling, J. R., Liebman, J. B., &amp; Katz, L. F. (2007). Experimental analysis of neighborhood effects. <i>Econometrica, 75</i>(1), 83–119.</li>
+          <li>Lee, D. S., &amp; Lemieux, T. (2010). Regression discontinuity designs in economics. <i>Journal of Economic Literature, 48</i>(2), 281–355.</li>
+          <li>Zimmerman, M. A. (2000). Empowerment theory. In <i>Handbook of community psychology</i> (pp. 43–63). Springer.</li>
+        </ul>
+      </div>
+      <div class="foot__qr">
+        <img src="assets/qr.svg" width="168" height="168" alt="QR code that opens this page">
+        <p>Scan to open this page on a phone.</p>
+        <p class="foot__built" id="foot-built"></p>
+      </div>
+    </div>
+    <p class="foot__notice">Prepared for a GPI AADK 2027 research proposal (Bidang 5, Skop 6). Synthetic data and a proposed framework. Not an official AADK product.</p>
+  </footer>
 
+  <div class="tip" id="tip" role="status" hidden></div>
+  <noscript><p class="noscript">This page needs JavaScript to draw its charts and tables.</p></noscript>
   <script src="assets/data.js"></script>
   <script src="assets/app.js"></script>
 </body>
