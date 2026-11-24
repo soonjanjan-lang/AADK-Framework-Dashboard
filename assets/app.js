@@ -218,7 +218,7 @@
     s("line", { x1: m.l, x2: m.l + pw, y1: m.t + ph, y2: m.t + ph }, ax);
     var xstep = W <= 12 ? 6 : 12;
     for (var xt = -W; xt <= W; xt += xstep) stext(svg, X(xt), m.t + ph + 22, (xt > 0 ? "+" : xt < 0 ? MINUS : "") + Math.abs(xt), "ax-label", "middle");
-    stext(svg, m.l + pw / 2, height - 8, cfg.xlabel, "ax-label", "middle");
+    stext(svg, m.l + pw / 2, height - 8, width < 440 ? "Months from unit start to intake" : cfg.xlabel, "ax-label", "middle");
     s("line", { "class": "cut", x1: X(0), x2: X(0), y1: m.t - 6, y2: m.t + ph }, svg);
     stext(svg, X(0) - 8, m.t - 34, cfg.cutLabel || "SKUAD unit starts", "cut-label", "end");
     if (cfg.whiskers) res.bins.forEach(function (p) {
@@ -240,6 +240,13 @@
       hit.addEventListener("mousemove", function (e) { dot.classList.add("is-hot"); showTip(e, html); });
       hit.addEventListener("mouseleave", function () { dot.classList.remove("is-hot"); hideTip(); });
     });
+    if (cfg.annotateDot && res.bins.length && width >= 440) {
+      var p0 = res.bins[0], ax0 = X(p0.mid) - 6, ay0 = m.t + ph * 0.16;
+      var ag = s("g", { "class": "gap-group" }, svg);
+      stext(ag, ax0, ay0, "Each dot: clients in", "gap-sub", "start");
+      stext(ag, ax0, ay0 + 20, "one 3-month band", "gap-sub", "start");
+      s("line", { "class": "gap-leader", x1: X(p0.mid), x2: X(p0.mid), y1: ay0 + 28, y2: Y(p0.mean) - 9 }, ag);
+    }
     if (res.ok) {
       var gg = s("g", { "class": "gap-group" }, svg);
       var yL = Y(res.fl.a), yR = Y(res.fr.a), bx = X(0) + 7;
@@ -305,13 +312,16 @@
     var a = h("div"), b = h("div");
     host.appendChild(a); host.appendChild(b);
     var rs = fitFor("support", "all", 24, 3), rr = fitFor("relapse", "all", 24, 3);
-    drawPanel(a, { key: "support", lvl: "client", title: "A. Clients receiving SKUAD support (%)", sub: "Share of clients, by months between unit start and intake", unit: "pct", res: rs, W: 24, xlabel: "Months between local SKUAD start and client intake", valueLabel: "Received support", animate: animate });
+    drawPanel(a, { key: "support", lvl: "client", title: "A. Clients receiving SKUAD support (%)", sub: "Share of clients, by months between unit start and intake", unit: "pct", res: rs, W: 24, xlabel: "Months between local SKUAD start and client intake", valueLabel: "Received support", animate: animate, annotateDot: true });
     drawPanel(b, { key: "relapse", lvl: "client", title: "B. Clients who relapsed within 12 months (%)", sub: "Share of clients, by months between unit start and intake", unit: "pct", res: rr, W: 24, xlabel: "Months between local SKUAD start and client intake", valueLabel: "Relapsed", animate: animate });
     var js = Math.round(rs.gap * 100), jr = Math.round(rr.gap * 100), per = Math.round(Math.abs(jr) / js * 100);
     $("#readtogether").innerHTML = "Read together: SKUAD support <b>jumps by " + js + " points</b> in the month a unit starts (from about " +
       Math.round(rs.fl.a * 100) + " to " + Math.round(rs.fr.a * 100) + " in every 100 clients), and relapse within 12 months <b>falls by about " + Math.abs(jr) +
       " points</b>. That is about <b>" + per + " fewer relapses for every 100 clients SKUAD actually supports</b> (" + Math.abs(jr) + " ÷ " + js + " × 100). " +
       '<a href="#rdd">Explore the diagrams</a>.';
+    var fr = D.rdd.formal.client.all.out.relapse;
+    $("#readtogether").appendChild(h("span", { "class": "honest", text: " In these made-up records the relapse drop is not conclusive on its own: its 95% range (" +
+      signed(fr.lo * 100, 1) + " to " + signed(fr.hi * 100, 1) + " points) includes zero. The full AADK records would be larger and more precise." }));
     fig2Drawn = true;
   }
 
@@ -326,7 +336,7 @@
         how: "RDD on client records (dataset C), with FGDs", gets: "Causal estimates for DV2, the Recovery Support Index",
         dirs: [["completed", "up", "Completed supervision"], ["clean_urine", "up", "Clean urine tests"], ["relapse", "down", "Relapse within 12 months"], ["work", "up", "Working or studying at exit"]] },
       { n: 3, q: "What limits SKUAD, and what would make it work better and last?", skop: "Skop (iii): challenges and improvement needs",
-        how: "Six focus groups, thematic analysis", gets: "Challenges and improvement needs, in the words of volunteers, officers, leaders and clients", dirs: [] },
+        how: "Focus groups, analysed by thematic analysis", gets: "Challenges and improvement needs, in the words of volunteers, officers, leaders and clients", dirs: [] },
       { n: 4, q: "What should a community-based SKUAD framework contain?", skop: "Expected outcome",
         how: "Combining the RDD and FGD findings; tested with AADK committees", gets: "The Empowerment Framework, ready for AADK to use", dirs: [] }
     ];
@@ -365,25 +375,44 @@
     return '<span class="kind"><svg viewBox="0 0 14 14" aria-hidden="true">' + shape + "</svg>" + esc(kind) + "</span>";
   }
   function renderLineMap() {
-    var host = $("#linemap"), W = 980, H = 292;
-    var svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "The five datasets connect through shared codes: B and C link to A by locality; E links to A by locality and year; D links to C by district and year." });
+    var host = $("#linemap");
+    host.innerHTML = "";
     var byId = {}; D.datasets.forEach(function (d) { byId[d.id] = d; });
-    var P = { B: [110, 150], A: [360, 150], C: [610, 150], D: [860, 150], E: [360, 262] };
-    s("path", { d: "M" + P.B[0] + "," + P.B[1] + "H" + P.D[0], stroke: "#1F5FAD", "stroke-width": 10, "stroke-linecap": "round", fill: "none" }, svg);
-    s("path", { d: "M" + P.A[0] + "," + P.A[1] + "V" + P.E[1], stroke: "#565D69", "stroke-width": 10, "stroke-linecap": "round", fill: "none" }, svg);
-    [["locality_id", 235, 186], ["locality_id", 485, 186], ["district, year", 735, 186], ["locality, year", 376, 216]].forEach(function (k) { stext(svg, k[1], k[2], k[0], "lm-key", k[1] === 376 ? "start" : "middle"); });
+    var narrow = host.getBoundingClientRect().width < 700;
+    var W = narrow ? Math.max(290, Math.floor(host.getBoundingClientRect().width) - 40) : 980, H = narrow ? 730 : 292;
+    var svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "The five datasets connect through shared codes: B and C link to A by locality; E links to A by locality and year; D links to C by district and year." });
+    var P;
+    if (!narrow) {
+      P = { B: [110, 150], A: [360, 150], C: [610, 150], D: [860, 150], E: [360, 262] };
+      s("path", { d: "M" + P.B[0] + "," + P.B[1] + "H" + P.D[0], stroke: "#1F5FAD", "stroke-width": 10, "stroke-linecap": "round", fill: "none" }, svg);
+      s("path", { d: "M" + P.A[0] + "," + P.A[1] + "V" + P.E[1], stroke: "#565D69", "stroke-width": 10, "stroke-linecap": "round", fill: "none" }, svg);
+      [["locality_id", 235, 186], ["locality_id", 485, 186], ["district, year", 735, 186], ["locality, year", 376, 216]].forEach(function (k) { stext(svg, k[1], k[2], k[0], "lm-key", k[1] === 376 ? "start" : "middle"); });
+    } else {
+      P = { B: [56, 40], A: [56, 190], E: [22, 340], C: [56, 490], D: [56, 640] };
+      s("path", { d: "M56,40 V640", stroke: "#1F5FAD", "stroke-width": 10, "stroke-linecap": "round", fill: "none" }, svg);
+      s("path", { d: "M56,190 C56,280 22,280 22,340", stroke: "#565D69", "stroke-width": 10, "stroke-linecap": "round", fill: "none" }, svg);
+    }
+    var link = { B: "joins A on locality_id", C: "joins A on locality_id", E: "joins A on locality and year", D: "joins C on district and year", A: "" };
     Object.keys(P).forEach(function (id) {
       var d = byId[id], x = P[id][0], y = P[id][1];
       var g = s("g", { "class": "lm-st", tabindex: 0, role: "button", "aria-label": "Show dataset " + id + ": " + d.title }, svg);
       s("circle", { cx: x, cy: y, r: 17, fill: "#FFFDF8", stroke: "#1E2B3C", "stroke-width": 6 }, g);
       stext(g, x, y + 6, id, "lm-name", "middle");
-      var tx = id === "E" ? x + 32 : x, an = id === "E" ? "start" : "middle";
-      if (id === "E") { stext(g, tx, y - 8, d.title, "lm-name", an); stext(g, tx, y + 14, d.row + " \u00B7 " + int(d.rows) + " rows", null, an); }
-      else {
-        var lines = wrapWords(d.row, 22);
-        stext(g, tx, 52, d.title, "lm-name", an);
-        lines.forEach(function (ln, i) { stext(g, tx, 74 + i * 20, ln, null, an); });
-        stext(g, tx, 74 + lines.length * 20, int(d.rows) + " rows", null, an);
+      if (narrow) {
+        var tx2 = 92, lines2 = wrapWords(d.row, Math.max(18, Math.floor((W - tx2) / 9)));
+        stext(g, tx2, y + 6, d.title, "lm-name", "start");
+        lines2.forEach(function (ln, i) { stext(g, tx2, y + 28 + i * 20, ln, null, "start"); });
+        stext(g, tx2, y + 28 + lines2.length * 20, int(d.rows) + " rows", null, "start");
+        if (link[id]) wrapWords(link[id], Math.max(18, Math.floor((W - tx2) / 9))).forEach(function (ln, i) { stext(g, tx2, y + 48 + lines2.length * 20 + i * 20, ln, "lm-key", "start"); });
+      } else {
+        var tx = id === "E" ? x + 32 : x, an = id === "E" ? "start" : "middle";
+        if (id === "E") { stext(g, tx, y - 8, d.title, "lm-name", an); stext(g, tx, y + 14, d.row + " \u00B7 " + int(d.rows) + " rows", null, an); }
+        else {
+          var lines = wrapWords(d.row, 22);
+          stext(g, tx, 52, d.title, "lm-name", an);
+          lines.forEach(function (ln, i) { stext(g, tx, 74 + i * 20, ln, null, an); });
+          stext(g, tx, 74 + lines.length * 20, int(d.rows) + " rows", null, an);
+        }
       }
       g.style.cursor = "pointer";
       var go = function () { selectDataset(id, true); };
@@ -423,23 +452,28 @@
       h("div", null, h("dt", { text: "Rows" }), h("dd", { "class": "big", text: int(d.rows) })),
       h("div", null, h("dt", { text: "Likely AADK source" }), h("dd", { text: d.source })),
       h("div", null, h("dt", { text: "Used for" }), h("dd", { text: d.purpose }))));
+    var KEYFIRST = { A: ["locality_id", "year_month", "months_since_unit_start", "new_signups", "activities_total"],
+      C: ["client_id", "intake_month", "skuad_unit_start_month", "months_from_unit_start_to_intake", "skuad_support_received", "relapse_within_12m"] };
+    var names = d.columns.map(function (c) { return c.name; }), first = KEYFIRST[id] || [];
+    var order = first.map(function (n) { return names.indexOf(n); }).concat(names.map(function (n, i) { return i; }).filter(function (i) { return first.indexOf(names[i]) < 0; }));
+    var startCol = names.indexOf(id === "A" ? "months_since_unit_start" : id === "C" ? "months_from_unit_start_to_intake" : "");
     var t = h("table", { "class": "dt dt--data" });
     var thead = h("thead"), tr = h("tr");
-    d.columns.forEach(function (c) {
+    order.map(function (i) { return d.columns[i]; }).forEach(function (c) {
       tr.appendChild(h("th", { scope: "col", title: c.meaning, "class": c.kind === "Calculated" ? "th-calc" : c.kind === "Suggested" ? "th-sugg" : null, html: kindMark(c.kind).replace(/<\/svg>[^<]*<\/span>/, "</svg>" + esc(c.name) + "</span>") }));
     });
     thead.appendChild(tr); t.appendChild(thead);
     var tb = h("tbody");
     d.preview.forEach(function (row) {
-      var r = h("tr");
-      row.forEach(function (v) {
+      var r = h("tr", { "class": startCol >= 0 && row[startCol] === 0 ? "is-start" : null });
+      order.map(function (i) { return row[i]; }).forEach(function (v) {
         var isNum = typeof v === "number";
         r.appendChild(h("td", { "class": (isNum ? "num" : "") + (v == null ? " blank" : ""), text: v == null ? "blank" : isNum ? (Number.isInteger(v) ? String(v) : String(v)) : v }));
       });
       tb.appendChild(r);
     });
     t.appendChild(tb);
-    p.appendChild(h("p", { "class": "note", text: "A few example rows (" + d.preview.length + " of " + int(d.rows) + "), " + d.columns.length + " columns: scroll sideways to see them all. Hover over a column name for its meaning, or search the dictionary below." }));
+    p.appendChild(h("p", { "class": "note", text: "A few example rows (" + d.preview.length + " of " + int(d.rows) + "), " + d.columns.length + " columns, key columns first: scroll sideways to see them all." + (startCol >= 0 ? " The highlighted row is the month the local SKUAD unit started." : "") + " Hover over a column name for its meaning, or search the dictionary below." }));
     p.appendChild(h("div", { "class": "tablewrap", tabindex: "0", role: "region", "aria-label": "Example rows of dataset " + id }, t));
     p.appendChild(h("p", { "class": "legend-kinds", html: kindMark("Recorded").replace("Recorded<", "Recorded by AADK<") + kindMark("Calculated").replace("Calculated<", "Calculated (a formula in the workbook)<") + kindMark("Suggested").replace("Suggested<", "Suggested new field<") }));
     if (id === "C") p.appendChild(h("p", { "class": "callout", html: "The column the RDD needs most: <code>months_from_unit_start_to_intake</code> = intake month minus the month the local SKUAD unit started. Negative means the client entered <b>before</b> SKUAD started; 0 or more means <b>after</b>." }));
@@ -656,7 +690,7 @@
     host.appendChild(grid);
     // a. crowding
     var b3 = ck.binomial.filter(function (x) { return x.months === 3; })[0];
-    var c1 = card("No crowding at the start month", ICON.ok, "Within 3 months either side: " + int(b3.before) + " intakes before and " + int(b3.after) + " after. A fair coin would give such a split easily (p = " + num(b3.p, 2) + ").");
+    var c1 = card("No crowding at the start month", ICON.ok, "Within 3 months either side: " + int(b3.before) + " intakes before and " + int(b3.after) + " after: no more difference than chance would give.");
     grid.appendChild(c1);
     var bars = Object.keys(ck.density).map(Number).filter(function (k) { return k >= -24 && k < 24; }).sort(function (p, q) { return p - q; });
     var hc = h("div"); c1.appendChild(hc);
@@ -676,7 +710,7 @@
       [-24, -12, 0, 12, 24].forEach(function (x) { stext(svg, X(x), height - 16, (x > 0 ? "+" : x < 0 ? MINUS : "") + Math.abs(x), "ax-label", "middle"); });
       hc.appendChild(svg);
     })();
-    c1.appendChild(h("p", { text: "A density test agrees when fitted with straight lines (p = " + num(ck.rddensity.p1, 2) + "). Its curved version flags a bend made by the calendar window of the illustrative data, not crowding at the start (p = " + num(ck.rddensity.p2, 2) + ")." }));
+    c1.appendChild(h("p", { text: "Clients do not pile up just after a unit starts, which fits with intake following arrests, court orders and walk-ins rather than SKUAD's start date." }));
     // b. balance
     var c2 = card("Clients look alike on both sides", ICON.ok, "None of the four client characteristics jumps at the start: every range includes zero.");
     grid.appendChild(c2);
@@ -760,11 +794,47 @@
     });
     t2.appendChild(tb2);
     host.appendChild(h("div", { "class": "tablewrap", tabindex: "0", role: "region", "aria-label": "Formal estimates" }, t2));
+    var ck = D.rdd.checks, b3 = ck.binomial.filter(function (x) { return x.months === 3; })[0];
+    host.appendChild(h("h4", { "class": "h3gap", text: "The checks in detail" }));
+    host.appendChild(h("ul", { "class": "detail-list" },
+      h("li", { text: "Crowding: " + ck.binomial.map(function (x) { return "within " + x.months + " month" + (x.months > 1 ? "s" : "") + ", " + int(x.before) + " before vs " + int(x.after) + " after (binomial p = " + num(x.p, 2) + ")"; }).join("; ") + "." }),
+      h("li", { text: "Density test (rddensity): local linear p = " + num(ck.rddensity.p1, 2) + "; local quadratic p = " + num(ck.rddensity.p2, 2) + ". The quadratic version reacts to a bend created by the calendar window of the illustrative data (intakes 2019 to mid-2025), not to crowding at month 0." }),
+      h("li", { text: "Fake start dates (take-up): " + ck.placebo.support.map(function (p) { return (p.cutoff > 0 ? "+" : MINUS) + Math.abs(p.cutoff) + " months " + signed(p.est * 100, 1) + " (p = " + num(p.p, 2) + ")"; }).join("; ") + "." }),
+      h("li", { text: "Leaving out the start month and the month before (donut): relapse " + signed(ck.donut.relapse.est * 100, 1) + " points (95% range " + signed(ck.donut.relapse.lo * 100, 1) + " to " + signed(ck.donut.relapse.hi * 100, 1) + ")." }),
+      h("li", { text: "A simple comparison of supported and unsupported clients gives " + signed(ck.naive.gap * 100, 1) + " points for relapse. It mixes SKUAD's effect with who chooses support, which is why the study uses the RDD." })));
+    void b3;
   }
 
   // ------------------------------------------------------------------ 5. numbers meet voices
-  function renderInterchange() {
-    var host = $("#interchange"), W = 1000, H = 430;
+  function drawInterchange() {
+    var host = $("#interchange");
+    host.innerHTML = "";
+    var narrow = host.getBoundingClientRect().width < 700;
+    if (narrow) {
+      var Wn = Math.max(290, Math.floor(host.getBoundingClientRect().width) - 32), Hn = 800;
+      var sv = s("svg", { viewBox: "0 0 " + Wn + " " + Hn, width: Wn, height: Hn, role: "img", "aria-label": "Two lines meet: AADK records and the RDD (how much) and focus groups and thematic analysis (why and how) join at the draft framework, which AADK committees test before the final framework." });
+      s("path", { "class": "ix-line", d: "M36,40 V500 L52,540", stroke: "#1F5FAD" }, sv);
+      s("path", { "class": "ix-line", d: "M68,276 V500 L52,540", stroke: "#0E7C5A" }, sv);
+      s("path", { "class": "ix-line", d: "M52,540 V760", stroke: "#B5501C" }, sv);
+      var tag = function (y, label, col) { var t = stext(sv, 96, y, label, "ix-tag", "start"); t.style.fill = col; };
+      tag(44, "NUMBERS LINE", "#1F5FAD"); tag(262, "VOICES LINE", "#0E7C5A"); tag(620, "FRAMEWORK LINE", "#93400F");
+      var vst = function (x, y, name, sub, square) {
+        if (square) s("rect", { x: x - 22, y: y - 22, width: 44, height: 44, rx: 12, fill: "#FFFDF8", stroke: "#1E2B3C", "stroke-width": 6 }, sv);
+        else s("circle", { "class": "ix-stn", cx: x, cy: y, r: 14 }, sv);
+        stext(sv, 96, y + 6, name, "ix-name", "start");
+        (sub || []).forEach(function (line, i) { stext(sv, 96, y + 28 + i * 20, line, null, "start"); });
+      };
+      vst(36, 84, "AADK records", ["datasets A to E"]);
+      vst(36, 170, "RDD", ["how much SKUAD changes", "each outcome (RO1, RO2)"]);
+      vst(68, 306, "Focus groups", ["volunteers, officers,", "leaders, counsellors,", "clients"]);
+      vst(68, 430, "Thematic analysis", ["why and how it works;", "challenges (RO3)"]);
+      vst(52, 540, "Draft framework", ["where numbers and", "voices agree or differ"], true);
+      vst(52, 664, "AADK committees", ["test and refine it"]);
+      vst(52, 752, "Final framework", ["RO4"]);
+      host.appendChild(sv);
+      return;
+    }
+    var W = 1000, H = 430;
     var svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "Two lines meet: AADK records and the RDD (how much) and focus groups and thematic analysis (why and how) join at the draft framework, which AADK committees test before the final framework." });
     s("path", { "class": "ix-line", d: "M40,90 H430 Q480,90 520,150 L590,210", stroke: "#1F5FAD" }, svg);
     s("path", { "class": "ix-line", d: "M40,330 H430 Q480,330 520,270 L590,210", stroke: "#0E7C5A" }, svg);
@@ -783,7 +853,7 @@
     };
     stn(230, 90, "AADK records", ["datasets A to E"]);
     stn(410, 90, "RDD", ["how much SKUAD changes", "each outcome (RO1, RO2)"]);
-    stn(230, 330, "Six focus groups", ["volunteers, officers, leaders,", "counsellors, clients"]);
+    stn(230, 330, "Focus groups", ["volunteers, officers,", "leaders, counsellors,", "clients"]);
     stn(410, 330, "Thematic analysis", ["why and how it works;", "challenges (RO3)"]);
     s("rect", { x: 568, y: 188, width: 44, height: 44, rx: 12, fill: "#FFFDF8", stroke: "#1E2B3C", "stroke-width": 6 }, svg);
     stext(svg, 622, 258, "Draft framework", "ix-name", "start");
@@ -792,6 +862,10 @@
     stn(780, 210, "AADK committees", ["test and refine it"], true);
     stn(950, 210, "Final framework", ["RO4"], false, "end");
     host.appendChild(svg);
+  }
+  function renderInterchange() {
+    drawInterchange();
+    var host = $("#interchange");
     var t = $("#fgd-table");
     t.appendChild(h("thead", null, h("tr", null, ["Group", "What we will ask (examples)", "What it feeds"].map(function (x) { return h("th", { scope: "col", text: x }); }))));
     var tb = h("tbody");
@@ -816,7 +890,7 @@
   function renderFramework() {
     $("#fw-status").innerHTML = ICON.info + "<span>" + esc(K.status_note) + "</span>";
     var map = $("#fwmap");
-    map.appendChild(h("div", { "class": "fw-goal" }, h("span", { text: "Goal" }), h("strong", { text: K.goal })));
+    map.appendChild(h("div", { "class": "fw-goal" }, h("strong", { text: "Goal: " + K.goal })));
     var bullets = {
       P1: [K.indicators.length + " indicators in a results chain", "Targets set from the RDD jumps", "Status by district and year"],
       P2: ["Aware → Join → Contribute → Lead", "3 member categories, 6 activity streams", "Partners and ways to keep volunteers"],
@@ -836,7 +910,7 @@
     var tabs = $("#fw-tabs");
     K.pillars.forEach(function (p) {
       tabs.appendChild(h("button", { "class": "tab", role: "tab", id: "fwtab-" + p.id, "aria-controls": "fw-panel", "aria-selected": String(p.id === FW.tab), tabindex: p.id === FW.tab ? "0" : "-1",
-        onclick: function () { selectPillar(p.id, false); } }, h("span", { "class": "tab__id", "aria-hidden": "true", text: String(p.num) }), p.name));
+        onclick: function () { selectPillar(p.id, false); } }, p.num + ". " + p.name));
     });
     tabs.addEventListener("keydown", tabKeys(tabs, function (btn) { selectPillar(btn.id.replace("fwtab-", ""), false); }));
     var base = $("#fw-base");
@@ -1060,7 +1134,7 @@
       if (Math.abs(window.innerWidth - lastW) < 40) return;
       lastW = window.innerWidth;
       clearTimeout(t);
-      t = setTimeout(function () { drawFig2(false); updateRdd(); if (FW.tab === "P2" || FW.tab === "P1") selectPillar(FW.tab, false); }, 180);
+      t = setTimeout(function () { drawFig2(false); updateRdd(); renderLineMap(); drawInterchange(); if (FW.tab === "P2" || FW.tab === "P1") selectPillar(FW.tab, false); }, 180);
     });
     if (location.hash) {
       var target = document.getElementById(location.hash.slice(1));

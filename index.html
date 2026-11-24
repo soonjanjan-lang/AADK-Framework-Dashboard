@@ -22,7 +22,6 @@
 
   <div class="shell">
     <nav class="route" id="route" aria-label="Route through this page">
-      <p class="route__title">Your route</p>
       <ol class="route__list">
         <li><a href="#question" data-station="question"><span class="route__stn" aria-hidden="true"></span><span class="route__name">The question</span></a></li>
         <li><a href="#plan" data-station="plan"><span class="route__stn" aria-hidden="true"></span><span class="route__name">The plan</span></a></li>
@@ -32,6 +31,7 @@
         <li><a href="#framework" data-station="framework"><span class="route__stn route__stn--end" aria-hidden="true"></span><span class="route__name">The framework</span></a></li>
       </ol>
       <p class="route__here" id="route-here" aria-live="polite"></p>
+      <p class="route__notice">Synthetic data. Not an official AADK product.</p>
     </nav>
 
     <main id="main" tabindex="-1">
@@ -66,6 +66,7 @@
           </figcaption>
         </figure>
         <p class="readtogether" id="readtogether"></p>
+        <a class="next" href="#plan"><span class="next__ring" aria-hidden="true"></span><span>Next stop: <b>The plan</b></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </section>
 
       <!-- 2. The plan -->
@@ -89,6 +90,7 @@
             <div class="more__body" id="power-body"></div>
           </details>
         </div>
+        <a class="next" href="#data"><span class="next__ring" aria-hidden="true"></span><span>Next stop: <b>The data</b></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </section>
 
       <!-- 3. The data -->
@@ -115,6 +117,7 @@
           <div class="tablewrap"><table class="dt" id="dict-table"></table></div>
         </div>
         <div class="downloads" id="downloads"></div>
+        <a class="next" href="#rdd"><span class="next__ring" aria-hidden="true"></span><span>Next stop: <b>RDD diagrams</b></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </section>
 
       <!-- 4. RDD diagrams -->
@@ -127,12 +130,7 @@
           </div>
         </header>
 
-        <ol class="howto" aria-label="How to read the chart">
-          <li><b>Dots</b> are averages for clients in the same band of months.</li>
-          <li><b>Lines</b> show the trend on each side.</li>
-          <li><b>The dashed line</b> is the month SKUAD started.</li>
-          <li><b>The gap</b> where the lines meet it is SKUAD's effect.</li>
-        </ol>
+        <p class="howto-line"><b>How to read the charts.</b> Each dot is an average for clients in the same band of months. The lines show the trend on each side. The dashed line is the month SKUAD started, and the gap where the lines meet it is SKUAD's effect.</p>
 
         <div class="controls" id="rdd-controls" role="group" aria-label="Chart settings"></div>
         <div class="explorer">
@@ -142,6 +140,7 @@
 
         <div class="tabs tabs--sub" role="tablist" aria-label="More about the RDD" id="rdd-tabs"></div>
         <div class="subpanel" id="rdd-sub" role="tabpanel" tabindex="0"></div>
+        <a class="next" href="#combine"><span class="next__ring" aria-hidden="true"></span><span>Next stop: <b>Where the numbers meet the voices</b></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </section>
 
       <!-- 5. Numbers meet voices -->
@@ -155,8 +154,9 @@
         </header>
         <div class="interchange" id="interchange"></div>
         <h3 class="h3gap">What the focus groups will ask</h3>
-        <p class="note">Six groups, six to eight people each, analysed by thematic analysis (Braun and Clarke, 2006). These are guiding questions only: no FGD findings exist yet, and none are shown.</p>
+        <p class="note">Focus groups of six to eight people each, with SKUAD volunteers, AADK officers, community leaders and village heads, school counsellors, clients in recovery and the national SKUAD secretariat, analysed by thematic analysis (Braun and Clarke, 2006). These are guiding questions only: no FGD findings exist yet, and none are shown.</p>
         <div class="tablewrap"><table class="dt dt--prose" id="fgd-table"></table></div>
+        <a class="next" href="#framework"><span class="next__ring" aria-hidden="true"></span><span>Next stop: <b>The framework</b></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
       </section>
 
       <!-- 6. The framework -->
