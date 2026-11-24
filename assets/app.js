@@ -403,7 +403,7 @@
         stext(g, tx2, y + 6, d.title, "lm-name", "start");
         lines2.forEach(function (ln, i) { stext(g, tx2, y + 28 + i * 20, ln, null, "start"); });
         stext(g, tx2, y + 28 + lines2.length * 20, int(d.rows) + " rows", null, "start");
-        if (link[id]) wrapWords(link[id], Math.max(18, Math.floor((W - tx2) / 9))).forEach(function (ln, i) { stext(g, tx2, y + 48 + lines2.length * 20 + i * 20, ln, "lm-key", "start"); });
+        if (link[id]) wrapWords(link[id], Math.max(12, Math.min(20, Math.floor((W - tx2) / 10.5)))).forEach(function (ln, i) { stext(g, tx2, y + 48 + lines2.length * 20 + i * 20, ln, "lm-key", "start"); });
       } else {
         var tx = id === "E" ? x + 32 : x, an = id === "E" ? "start" : "middle";
         if (id === "E") { stext(g, tx, y - 8, d.title, "lm-name", an); stext(g, tx, y + 14, d.row + " \u00B7 " + int(d.rows) + " rows", null, an); }
@@ -834,7 +834,7 @@
       host.appendChild(sv);
       return;
     }
-    var W = 1000, H = 430;
+    var W = 1000, H = 460;
     var svg = s("svg", { viewBox: "0 0 " + W + " " + H, width: W, height: H, role: "img", "aria-label": "Two lines meet: AADK records and the RDD (how much) and focus groups and thematic analysis (why and how) join at the draft framework, which AADK committees test before the final framework." });
     s("path", { "class": "ix-line", d: "M40,90 H430 Q480,90 520,150 L590,210", stroke: "#1F5FAD" }, svg);
     s("path", { "class": "ix-line", d: "M40,330 H430 Q480,330 520,270 L590,210", stroke: "#0E7C5A" }, svg);
